@@ -548,7 +548,8 @@ var srapp = app.srapp || {};
             }
 
         }
-    }
+    };
+
 
     srapp.widgets.flexsliderify = {
 
@@ -568,7 +569,11 @@ var srapp = app.srapp || {};
             animationSpeed: 1000,
             slideshowSpeed: 6000,
             prevText: '',
-            nextText: ''
+            nextText: '',
+            start: function (target) {
+                // needed on some pages where there's a sudden resize of the slider -> images are smaller than the container
+                target.resize();
+            }
         },
 
         /**

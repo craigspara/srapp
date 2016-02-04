@@ -1,0 +1,82 @@
+.accordionify {
+  width: 650px;
+  margin: 1em auto;
+}
+.accor-source {
+  padding: 1em;
+  border: 1px solid grey;
+}
+.accor-header-ctr {
+  /*float: left;*/
+  width: 100%;
+}
+.accor-header {
+  /*float: left;*/
+  width: 100%;
+  margin: 0px;
+}
+.accor-content {
+  /*display: none;*/
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  /*overflow-y: scroll;*/
+  max-height: 0;
+  overflow: hidden;
+  -o-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.accor-button {
+  float: right;
+  font-size: 30px;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transition-property: transform;
+  -ms-transition-property: transform;
+  -moz-transition-property: transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -o-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.accor-source.accor-opened .accor-content {
+  /*float: right;*/
+}
+.accor-source.accor-opened .accor-content {
+  /*display: block;*/
+  max-height: 1000px;
+  -o-transition-property: max-height;
+  -ms-transition-property: max-height;
+  -moz-transition-property: max-height;
+  -webkit-transition-property: max-height;
+  transition-property: max-height;
+  -o-transition-duration: 0.9s;
+  -ms-transition-duration: 0.9s;
+  -moz-transition-duration: 0.9s;
+  -webkit-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.accor-source.accor-opened .accor-button {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+}
