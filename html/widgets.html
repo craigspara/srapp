@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!--     http://staging-na-wwwinc.demandware.net/s/striderite_us/en/
+-->
+	<meta charset="UTF-8">
+	<title>Widgets</title>
+
+	<!----><script src="../dev/js/www_htmlhead_UI_includes.js"></script>
+    <script src="http://staging-na-wwwinc.demandware.net/on/demandware.static/Sites-striderite_us-Site/-/default/js/www_htmlhead_UI_includes.js"></script>
+	<script type="text/javascript">var app={};</script>
+	<!--<script src="http://demandware.edgesuite.net/aako_prd/on/demandware.static/Sites-striderite_us-Site/-/default/js/WebEvent.js" type="text/javascript"></script>-->
+	<link type="text/css" rel="stylesheet" href="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/v1450383706398/styles/overrides.css">
+	<link type="text/css" rel="stylesheet" href="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite-US-site-catalog/default/v1450383706398/styles/rosie-pope.css">
+	<style type="text/css">
+        .outer-wrapper {
+			width: 300%;
+			margin-left: -100%;
+            padding: 2em;
+        }
+
+		.outer-wrapper .inner-wrapper {
+			max-width: 920px;
+			margin: 0 auto;
+		}
+
+		.feature-item .image-wrapper {
+			width: 200px;
+		}
+		.image-wrapper img {
+			max-width: 100%;
+		}
+		.accordionify {
+			width: 650px;
+			margin: 1em auto;
+		}
+
+		.accor-source {
+			padding: 1em;
+			border: 1px solid grey;
+		}
+		.accor-header-ctr {
+			/*float: left;*/
+			width: 100%;
+		}
+		.accor-header {
+			/*float: left;*/
+			width: 100%;
+			margin: 0px;
+		}
+		.accor-content {
+			/*display: none;*/
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+			/*overflow-y: scroll;*/
+            max-height: 0;
+            overflow: hidden;
+
+
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+		}
+		.accor-button {
+			float: right;
+			font-size: 30px;
+            transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+
+            -o-transition-property: transform;
+            -ms-transition-property: transform;
+            -moz-transition-property: transform;
+            -webkit-transition-property: transform;
+            transition-property: transform;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+            -o-transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+		}
+		.accor-source.accor-opened .accor-content {
+			/*float: right;*/
+		}
+		.accor-source.accor-opened .accor-content {
+			/*display: block;*/
+            max-height: 1000px;
+
+            -o-transition-property: max-height;
+            -ms-transition-property: max-height;
+            -moz-transition-property: max-height;
+            -webkit-transition-property: max-height;
+            transition-property: max-height;
+            -o-transition-duration: 0.9s;
+            -ms-transition-duration: 0.9s;
+            -moz-transition-duration: 0.9s;
+            -webkit-transition-duration: 0.9s;
+            transition-duration: 0.9s;
+            -o-transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+		}
+		.accor-source.accor-opened .accor-button {
+			transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			-moz-transform: rotate(45deg);
+		}
+
+
+        .animateify-frame {
+            display: block;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /*transition-property: opacity;*/
+            /*transition-timing-function: ease-out;*/
+        }
+
+        .animateify-frame-wrapper {
+            width: 200px;
+            position: relative;
+            height: 300px;
+        }
+
+        .animateify-frame.animateify-current-frame {
+            /*display: block;*/
+            opacity: 1;
+        }
+
+        .revealer {
+            margin-top: 2em;
+            padding-left: 1em;
+            padding-right: 1em;
+        }
+        @media screen and (min-width: 767px) {
+            .revealer {
+                margin-top: 4em;
+            }
+        }
+        .revealer h4 {
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+            text-align: center;
+        }
+        .revealer p {
+            font-size: 0.75rem;
+            margin: 0;
+            text-align: center;
+        }
+        .revealer p:first-of-type {
+            margin-bottom: 0.5em;
+        }
+        .revealer p.unrevealed-text {
+            overflow: hidden;
+            max-height: 500px;
+            -o-transition-property: max-height;
+            -ms-transition-property: max-height;
+            -moz-transition-property: max-height;
+            -webkit-transition-property: max-height;
+            transition-property: max-height;
+            -o-transition-duration: 0.9s;
+            -ms-transition-duration: 0.9s;
+            -moz-transition-duration: 0.9s;
+            -webkit-transition-duration: 0.9s;
+            transition-duration: 0.9s;
+            -o-transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            transition-timing-function: ease-in-out;
+        }
+        .revealer p.unrevealed {
+            max-height: 0;
+            -o-transition-duration: 0.5s;
+            -ms-transition-duration: 0.5s;
+            -moz-transition-duration: 0.5s;
+            -webkit-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+        }
+        .revealer a.show-content {
+            display: inline-block;
+            margin-left: 0.75em;
+            font-size: inherit;
+            text-align: left;
+            width: 7em;
+        }
+
+		.featureify-item .image-wrapper {
+			width: 200px;
+		}
+		.image-wrapper img {
+			max-width: 100%;
+		}
+		div.mod-slider {
+			min-height: 400px;
+		}
+	</style>
+
+</head>
+<body>
+<div class="outer-wrapper clearfix">
+    <div class="inner-wrapper ">
+		<h2>animateify</h2>
+		<p>Script based animation. First trigger, animation runs forward. Second trigger, animation runs backward.</p>
+		<div class="animateify"
+        data-animateify-options='{
+            "animateifyFrameWrapper": "animateify-frame-wrapper",
+            "animateifyTrigger": "animateify-animation-trigger",
+            "animateifyAnimationSpeed": 300
+            }'>
+        <div class="animateify-frame-wrapper">
+            <img class="animateify-frame" src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-unfolded.jpg?$staticlink$"/>
+            <img class="animateify-frame" src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-folded.jpg?$staticlink$"/>
+        </div>
+        <div class="fold-trigger">
+            <div class="animateify-animation-trigger">
+                <p>Fold it down.</p>
+                <div class="image-wrapper">
+                    <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/down-arrow-icon-mo.png?$staticlink$" alt="" width="44">
+                </div>
+            </div>
+        </div>
+    </div>
+    	<div class="animateify"
+            data-animateify-options='{
+            "animateifyFrameWrapper": "animateify-frame-wrapper2",
+            "animateifyTrigger": "animateify-animation-trigger",
+            "animateifyAnimationSpeed": 500
+            }'>
+        <div class="animateify-frame-wrapper2">
+            <div class="image-wrapper">
+                <p>1</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-unfolded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>2</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-folded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>3</p>
+                <img  src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-unfolded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>4</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-folded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>5</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-unfolded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>6</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-folded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>7</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-unfolded.jpg?$staticlink$"/>
+            </div>
+            <div class="image-wrapper">
+                <p>8</p>
+                <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/fold-animation/snoot-animation-folded.jpg?$staticlink$"/>
+            </div>
+        </div>
+        <div class="fold-trigger">
+            <div class="animateify-animation-trigger">
+                <p>Fold it down.</p>
+                <div class="image-wrapper">
+                    <img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe2/main-landing-pages/snoot-drtv/down-arrow-icon-mo.png?$staticlink$" alt="" width="44">
+                </div>
+            </div>
+        </div>
+    </div>
+
+		<hr/>
+
+		<h2>accordionify</h2>
+		<p>Accordions with trigger</p>
+		<div class="accordionify" data-accor-options='{
+		"accorWrapper": "accor-source",
+		"accorTrigger": "accor-trigger",
+		"accorHeader": "accor-header",
+		"accorContent": "accor-content",
+		"accorButton": true
+		}' >
+
+
+				<!-- First feature : rounded edges-->
+				<div class="accor-source first-feature clearfix">
+					<div class="accor-header">
+						<div class="left-column">
+
+						</div>
+						<div class="right-column">
+							<h3>improve balance.</h3>
+							<p>Round soles reduce stumbles.</p>
+							<!--<div class="cta-wrapper">
+								<span class="cta-link">&rsaquo;</span>
+							</div>-->
+						</div>
+					</div>
+
+					<!-- First feature accordion drop-down-->
+					<div class="accor-content full-column">
+
+						<h4>rounded soles.</h4>
+						<p>Unlike ordinary sneakers with angular bottoms, our soles have smooth curves like the shape of baby&rsquo;s foot. So when they teeter, they won&rsquo;t always topple over.</p>
+						<div class="button-wrapper">
+							<a href="#" class="button">Shop now</a>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- Third feature : memory foam -->
+				<div  class="accor-source third-feature clearfix">
+					<div class="accor-header">
+						<div class="left-column">
+
+						</div>
+						<div class="right-column">
+							<h3>reduce fussiness.</h3>
+							<p>With all-day comfort.</p>
+							<!--<div class="cta-wrapper">
+								<span class="cta-link">Learn more</span>
+							</div>-->
+						</div>
+					</div>
+
+					<!-- Third feature accordion drop-down-->
+					<div class="accor-content full-column">
+
+						<h4>memory foam footbeds.</h4>
+						<p>A thick layer of pillowy-soft memory foam on the interior of each shoe keeps baby&rsquo;s feet supported and comfortable all day.</p>
+						<div class="button-wrapper">
+							<a href="#" class="button">Shop now</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Fourth feature : closures -->
+				<div  class="accor-source fourth-feature clearfix">
+					<div class="accor-header">
+						<div class="left-column">
+
+						</div>
+						<div class="right-column">
+							<h3>keep shoes on.</h3>
+							<p>These shoes have been kick tested.</p>
+							<!--<div class="cta-wrapper">
+								<span class="cta-link">Learn more</span>
+							</div>-->
+						</div>
+					</div>
+
+					<!-- Fourth feature accordion drop-down-->
+					<div class="accor-content full-column">
+
+						<h4>secure closures.</h4>
+						<p>Kicking off shoes at the farmer&rsquo;s market is a thing of the past thanks to these secure hook &amp; loop closures.</p>
+						<div class="button-wrapper">
+							<a href="#" class="button">Shop now</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Fifth feature : Flexible -->
+				<div  class="accor-source fifth-feature clearfix">
+					<div class="accor-header">
+						<div class="left-column">
+
+						</div>
+						<div class="right-column">
+							<h3>encourage natural movement.</h3>
+							<p>With surprisingly flexible soles.</p>
+							<!--<div class="cta-wrapper">
+								<span class="cta-link">Learn more</span>
+							</div>-->
+						</div>
+					</div>
+
+					<!-- Fifth feature accordion drop-down-->
+					<div class="accor-content full-column">
+
+						<h4>flexible soles.</h4>
+						<p>Whether they&rsquo;re cruising the furniture or climbing stairs, these flexible soles feel like walking barefoot.</p>
+						<div class="button-wrapper">
+							<a href="#" class="button">Shop now</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div class="accordionify" data-accor-options='{
+		"accorWrapper": "accor-source2",
+		"accorTrigger": "accor-trigger",
+		"accorHeader": "accor-header",
+		"accorContent": "accor-content",
+		"accorButton": true
+		}' >
+
+
+			<!-- First feature : rounded edges-->
+			<div class="accor-source2 first-feature clearfix">
+				<div class="accor-header">
+					<div class="left-column">
+
+					</div>
+					<div class="right-column">
+						<h3>improve balance.</h3>
+						<p>Round soles reduce stumbles.</p>
+						<div class="accor-trigger cta-link-wrapper">
+							<span class="cta-link">trigger &rsaquo;</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- First feature accordion drop-down-->
+				<div class="accor-content full-column">
+
+					<h4>rounded soles.</h4>
+					<p>Unlike ordinary sneakers with angular bottoms, our soles have smooth curves like the shape of baby&rsquo;s foot. So when they teeter, they won&rsquo;t always topple over.</p>
+					<div class="button-wrapper">
+						<a href="#" class="button">Shop now</a>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Third feature : memory foam -->
+			<div  class="accor-source2 third-feature clearfix">
+				<div class="accor-header">
+					<div class="left-column">
+
+					</div>
+					<div class="right-column">
+						<h3>reduce fussiness.</h3>
+						<p>With all-day comfort.</p>
+						<div class="accor-trigger cta-link-wrapper">
+							<span class="cta-link">Learn more</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Third feature accordion drop-down-->
+				<div class="accor-content full-column">
+
+					<h4>memory foam footbeds.</h4>
+					<p>A thick layer of pillowy-soft memory foam on the interior of each shoe keeps baby&rsquo;s feet supported and comfortable all day.</p>
+					<div class="button-wrapper">
+						<a href="#" class="button">Shop now</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fourth feature : closures -->
+			<div  class="accor-source2 fourth-feature clearfix">
+				<div class="accor-header">
+					<div class="left-column">
+
+					</div>
+					<div class="right-column">
+						<h3>keep shoes on.</h3>
+						<p>These shoes have been kick tested.</p>
+						<!--<div class="cta-wrapper">
+							<span class="cta-link">Learn more</span>
+						</div>-->
+					</div>
+				</div>
+
+				<!-- Fourth feature accordion drop-down-->
+				<div class="accor-content full-column">
+
+					<h4>secure closures.</h4>
+					<p>Kicking off shoes at the farmer&rsquo;s market is a thing of the past thanks to these secure hook &amp; loop closures.</p>
+					<div class="button-wrapper">
+						<a href="#" class="button">Shop now</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fifth feature : Flexible -->
+			<div  class="accor-source2 fifth-feature clearfix">
+				<div class="accor-header">
+					<div class="left-column">
+
+					</div>
+					<div class="right-column">
+						<h3>encourage natural movement.</h3>
+						<p>With surprisingly flexible soles.</p>
+						<!--<div class="cta-wrapper">
+							<span class="cta-link">Learn more</span>
+						</div>-->
+					</div>
+				</div>
+
+				<!-- Fifth feature accordion drop-down-->
+				<div class="accor-content full-column">
+
+					<h4>flexible soles.</h4>
+					<p>Whether they&rsquo;re cruising the furniture or climbing stairs, these flexible soles feel like walking barefoot.</p>
+					<div class="button-wrapper">
+						<a href="#" class="button">Shop now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<hr/>
+		<h2>revealer</h2>
+		<p>Revels hidden element. Trigger toggles open/closed state.</p>
+		<!-- Start descriptive copy block - html-bottom-block-landing-girl-20151208 -->
+
+		<div class="revealer reveal-wrapper instance1">
+			<h4>Girls&rsquo; Shoes instance 1</h4>
+			<p>Make sure she&rsquo;s ready to start her day on the right foot with sweet shoes for girls and little girls from Stride Rite.</p>
+			<p class="unrevealed-text">Our collection of girl&rsquo;s shoes includes a choice fit for every possible mood, event and fashion she might encounter—all in the must-have colors, fabrics and fits that both you and her will love. From school-uniform-ready Mary Janes to day-at-the-park machine washable Made2Play sneakers to darling dressy footwear with plenty of fancy details, there&rsquo;s a beautiful choice in little girl&rsquo;s shoes from Stride Rite. Whichever pair you pick, you can count on the quality that Stride Rite is known for, with shoes for little girls from only the best brands like Sketchers, Sperry Top-Siders, Merrell, Hush Puppies, Saucony, Crocs, Keds and more.</p></div>
+
+		<div class="revealer instance2" data-revealer-options='{
+		"revealMoreLinkClass": "revealerTrigger",
+		"revealMoreLinkText": "open revealer",
+		"revealLessLinkText": "close revealer"
+		}'>
+			<h4>Girls&rsquo; Shoes instance 2</h4>
+			<p>Make sure she&rsquo;s ready to start her day on the right foot with sweet shoes for girls and little girls from Stride Rite.</p>
+			<p class="unrevealed-text">Our collection of girl&rsquo;s shoes includes a choice fit for every possible mood, event and fashion she might encounter—all in the must-have colors, fabrics and fits that both you and her will love. From school-uniform-ready Mary Janes to day-at-the-park machine washable Made2Play sneakers to darling dressy footwear with plenty of fancy details, there&rsquo;s a beautiful choice in little girl&rsquo;s shoes from Stride Rite. Whichever pair you pick, you can count on the quality that Stride Rite is known for, with shoes for little girls from only the best brands like Sketchers, Sperry Top-Siders, Merrell, Hush Puppies, Saucony, Crocs, Keds and more.</p></div>
+
+		<!-- End descriptive copy block - html-bottom-block-landing-girl-20151208 -->
+		<hr/>
+		<h2>featureify & flexsliderify</h2>
+		<p>Featureify takes the content from a group of items and copies it to a featured position. Flexsliderify initializes all flexsliders on a page with .flexsliderify with either default settings or with custom settings.</p>
+		<div class="featureify clearfix instance-1"
+			 data-featureify-options='{
+				    "source": "featureify-source",
+					"destination": "featureify-wrapper",
+					"item": "featureify-item",
+					"featureToTop": true
+					}'>
+
+
+			<header>
+				<h2>Instance 1</h2>
+				<p>Find the newest in Stride Rite styles for kids of all ages and sizes.</p>
+			</header>
+
+			<div class="featureify-wrapper featured clearfix">
+			</div>
+
+			<!-- Flexslider Container-->
+			<div class="mod-flexslider mod-slider carousel first-example" data-flexslider-options='{
+					"animationSpeed": 1200,
+					"slideshowSpeed": 5000,
+					"controlNav": true,
+					"directionNav": true,
+					"prevText": "prev",
+					"nextText": "nxt"
+					}' >
+
+
+				<ul class="slides">
+					<!-- Slide 1 - Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker -->
+					<li class="not-featured featureify-source">
+						<article class="outer-content-wrapper featureify-item instance1 item1" data-pid="20321K">
+							<div class="outer-image-wrapper">
+								<div class="image-wrapper">
+									<a>
+										<img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe3/homepage/marketing-middle/new-arrivals-widget/YB54996DY_1_1200x1200.jpeg?$staticlink$" alt="Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker" />
+									</a>
+								</div>
+							</div>
+
+							<div class="content-wrapper">
+								<h3 class="new-arrivals-product-title">
+									<a>Instance 1 Item 1</a>
+								</h3>
+							</div>
+						</article>
+					</li>
+
+					<!-- Slide 1 - Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker -->
+					<li class="not-featured featureify-source">
+						<article class="outer-content-wrapper featureify-item instance1 item2">
+							<div class="outer-image-wrapper">
+								<div class="image-wrapper">
+									<a>
+										<img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe3/homepage/marketing-middle/new-arrivals-widget/YB54996DY_1_1200x1200.jpeg?$staticlink$" alt="Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker" />
+									</a>
+								</div>
+							</div>
+
+							<div class="content-wrapper">
+								<h3 class="new-arrivals-product-title">
+									<a>Instance 1 Item 2</a>
+								</h3>
+							</div>
+						</article>
+					</li>
+					<!-- Slide 1 - Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker -->
+					<li class="not-featured featureify-source">
+						<article class="outer-content-wrapper featureify-item instance1 item3">
+							<div class="outer-image-wrapper">
+								<div class="image-wrapper">
+									<a>
+										<img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe3/homepage/marketing-middle/new-arrivals-widget/YB54996DY_1_1200x1200.jpeg?$staticlink$" alt="Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker" />
+									</a>
+								</div>
+							</div>
+
+							<div class="content-wrapper">
+								<h3 class="new-arrivals-product-title">
+									<a>Instance 1 Item 3</a>
+								</h3>
+							</div>
+						</article>
+					</li>
+					<!-- Slide 1 - Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker -->
+					<li class="not-featured featureify-source">
+						<article class="outer-content-wrapper featureify-item instance1 item4">
+							<div class="outer-image-wrapper">
+								<div class="image-wrapper">
+									<a>
+										<img src="http://staging-na-wwwinc.demandware.net/on/demandware.static/-/Sites-striderite_us-Library/default/content/seasonal-content/2015-fall/fe3/homepage/marketing-middle/new-arrivals-widget/YB54996DY_1_1200x1200.jpeg?$staticlink$" alt="Stride Rite Star Wars&trade; Hyperdrive Storm Trooper Sneaker" />
+									</a>
+								</div>
+							</div>
+
+							<div class="content-wrapper">
+								<h3 class="new-arrivals-product-title">
+									<a>Instance 1 Item 4</a>
+								</h3>
+							</div>
+						</article>
+					</li>
+
+				</ul>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="../js/srapp.js"></script>
+
+<!--<script src="../dev/js/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>-->
+
+<script src="http://staging-na-wwwinc.demandware.net/on/demandware.static/Sites-striderite_us-Site/-/default/v1450383706398/lib/jquery/ui/jquery-ui-1.9.2.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+	(function(app){
+		app.isMobileUserAgent = false;
+		app.isProDeal = false;
+		app.zoomViewerEnabled = true;
+		app.constants = {"AVAIL_STATUS_IN_STOCK":"IN_STOCK","AVAIL_STATUS_PREORDER":"PREORDER","AVAIL_STATUS_BACKORDER":"BACKORDER","AVAIL_STATUS_NOT_AVAILABLE":"NOT_AVAILABLE","PI_METHOD_GIFT_CERTIFICATE":"GIFT_CERTIFICATE"};
+		app.resources = {"MOBILE_GPS_ENABLED":true,"LOCALE":"default","ADDCART_ERRORCOLOR":"Please select a <strong>color</strong> before adding to the cart.","ADDCART_ERRORSIZE":"Please select a <strong>size</strong> before adding to the cart.","ADDCART_ERRORWIDTH":"Please select a <strong>width</strong> before adding to the cart.","ADDCART_ERRORSIZEWIDTH":"Please select a <strong>size</strong> and a <strong>width</strong> before adding to the cart.","ADDCART_ERRORWAIST":"Please select a <strong>waist</strong> before adding to the cart.","ADDCART_ERRORLENGTH":"Please select a <strong>length</strong> before adding to the cart.","ADDCART_ERRORLENGTHWAIST":"Please select a <strong>length</strong> and a <strong>waist</strong> before adding to the cart.","ADDCART_ERRORSIZECUPSIZE":"Please select a <strong>size</strong> and a <strong>cup size</strong> before adding to the cart.","ADDCART_ERRORCUPSIZE":"Please select a <strong>cup size</strong> before adding to the cart.","ADDCART_ERRORSIZELENGTH":"Please select a <strong>size</strong> and a <strong>length</strong> before adding to the cart.","ADDCART_GCVALUEERROR":"Please select a <strong>value</strong> for the gift card before adding to cart.","ADDCART_GCTYPEERROR":"Please select a <strong>type</strong> for the gift card before adding to cart.","ADDCART_GCTYPEVALUEERROR":"Please select a <strong>type</strong> and <strong>value</strong> for the gift card before adding to cart.","ADDCART_PREORDER":"Pre-Order Now","ADDSCHOOLCODE_ERROR":"There was an error looking up this School Code","NOT_AVAILABLE":"This item is currently not available.","QTY_NOT_AVAILABLE":"This quantity is not available.","SHIP_QualifiesFor":"This shipment qualifies for","CC_LOAD_ERROR":"Couldn't load credit card!","REG_ADDR_ERROR":"Couldn't Load Address","BONUS_PRODUCTS_MODALTITLE":"Bonus Product(s)","BONUS_PRODUCTS":"Bonus Product(s)","SELECT_BONUS_PRODUCTS":"Select {0} Bonus Product(s)","SELECT_BONUS_PRODUCT":"Select","BONUS_PRODUCT_MAX":"The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.","SIMPLE_SEARCH":"Search","SUBSCRIBE_EMAIL_DEFAULT":"Email Address","CURRENCY_SYMBOL":"$","MISSINGVAL":"Please Enter {0}","SERVER_ERROR":"Server connection failed!","MISSING_LIB":"jQuery is undefined.","BAD_RESPONSE":"Bad response, Parser error","INVALID_PHONE":"Please specify a valid phone number.","INVALID_EMAIL":"The email address is invalid.","SUGGESTED_EMAIL_CORRECTION":"Did you mean {0}?","INVALID_CUSTOMER_NAME":"The name you entered is invalid.","INVALID_CUSTOMER_CITY":"The city you entered is invalid.","INVALID_GIFT_CERT_PIN":"Please enter a valid Gift Certificate PIN","REMOVE":"Remove","QTY":"QTY","EMPTY_IMG_ALT":"Remove","COMPARE_BUTTON_LABEL":"Compare Items","COMPARE_CONFIRMATION":"This will remove the first product added to compare.  Is that OK?","COMPARE_REMOVE_FAIL":"Unable to remove item from list","COMPARE_ADD_FAIL":"Unable to add item to list","QV_LABEL":"Quick Look","ADD_TO_CART_FAIL":"Unable to add item '{0}' to cart ","REGISTRY_SEARCH_ADVANCED_CLOSE":"Close Advanced Search","POSTCODE_EXCLUDED_COUNTRIES":"FR","GIFT_CERT_INVALID":"Invalid Gift Card Code","GIFT_CERT_BALANCE":"Your current gift certificate balance is ","GIFT_CERT_AMOUNT_INVALID":"Gift Certificate can only be purchased with a minimum of $5 and maximum of $5000","GIFT_CERT_MISSING":"Please enter a gift certificate code.","COUPON_CODE_MISSING":"Please Enter a Coupon Code","COOKIES_DISABLED":"Your browser currently is not set to accept cookies. Please turn it on or check if you have another program set to block cookies.","BML_AGREE_TO_TERMS":"You must agree to the terms and conditions","CHAR_LIMIT_MSG":"You have {0} characters left out of {1}","CONFIRM_DELETE":"Do you want to remove this {0}?","TITLE_GIFTREGISTRY":"gift registry","TITLE_ADDRESS":"address","TITLE_CREDITCARD":"credit card","LABEL_ZIPCODE":"Zip Code","LABEL_POSTALCODE":"Postal Code","SERVER_CONNECTION_ERROR":"Server connection failed!","IN_STOCK_DATE":"The expected ship date is {0}.","INIFINITESCROLL":"Show All","TITLE_SHAREORDER":"Share Your Order","TITLE_CARDDECLINED":"Your credit card was declined","SEPARATOR_VARIATION_TITLE":"and","BUTTON_VARIATION_TITLE":"Please select","BUTTON_VARIATION_SIZE":"Size","BUTTON_VARIATION_WIDTH":"Width","BUTTON_VARIATION_COLOR":"Color","BUTTON_VARIATION_DESIGN":"Design","STORE_ID":"striderite_us","ACCOUNT_AGREE_TO_TERMS":"*You must agree to the terms and conditions","ACCOUNT_AGREE_TO_AGE":"*You must agree with age condition","ADD_REMEMBERED_ITEM":"Add To Wishlist","REMOVE_REMEMBERED_ITEM":"Remove From Wishlist","UPDATE_REMEMBERED_ITEM":"Update Remembered Item","ADD_REMEMBERED_GRID_ITEM":"Add to Wishlist","ADD_REMEMBERED_MOBILE_ITEM":"Add To Wishlist","WISHLIST_FACEBOOK_SHAREMSG":"Check out my favorite products!","TWITTER_SHARE_DESCRIPTION":"Check out this great Stride Rite product! ","PINTEREST_SHARE_DESCRIPTION":"Check out this cool Stride Rite product","EMPLOYEEAUTH":"You are not logged in","EMPLOYEESUCCESS":"Success!","EMPLOYEENORESULTS":"No employee found","EMPLOYEEPROMOTIONSTACKING":"Sorry, discounts cannot be combined.","EMPPROMOCODE":["WWWEMPLOYEE"],"CURRENT_USERNAME":"","CURRENT_USERFIRSTNAME":"","CURRENT_USERLASTNAME":"","OMNITURE_ENABLED":true,"IS_IN_STORE":false,"COUNTRY_COOKIE_PREF":"multiDomain","PRO_DEAL_FILE_SIZE_MSG":"File exceedes maximum allowed size (5 Mb)","PRO_DEAL_FILE_MISSING":"No file selected","LOGIN_TITLE":"Login","PROMOTIONAL_DIALOG_TITLE":"Promotional","REGISTER_ERROR_PW_RANGE":"Incorrect password range","REGISTER_ERROR_PW_MATCH":"Passwords do not match","REGISTER_ERROR_PW_FORMAT":"Password Must contain 3 Of The Following: Uppercase, Lowercase, Numeric, Special Character","REQUIREMENT_TITLE":"Why is this information required?","USER_DEVICE":"desktop","REMEMBERED":"Wishlist","REMEMBERED_PL":"Remembered","PRODUCT_DESCRIPTION_DISPLAY_TYPE":"firstFourLines","READ_MORE_LINK_TEXT":"Read More","READ_LESS_LINK_TEXT":"Read Less","PRODUCT_EXPAND_DESCRIPTION":"...More","PRODUCT_COLLAPSE_DESCRIPTION":"Less","BV_REVIEWS_ENABLED":true,"AMAZON_INVALID_SHIPPING_ADDRESS":"The currently selected address is not a valid or supported shipping destination.","AMAZON_ALLOWED_SHIPPING_COUNTRIES":"US","CONFIGURATOR_HOWITWORKS_1":"Customize your <product> with these tabs","CONFIGURATOR_HOWITWORKS_2":"Click on parts of the product to select and customize them","CONFIGURATOR_HOWITWORKS_3":"Temporarily save each of your designs to test out several options","CONFIGURATOR_HOWITWORKS_4":"Buy your custom <product> or save them for later","CONFIGURATOR_HOWITWORKS_5":"Share your design to show it off or get feedback from your friends","CONFIGURATOR_HOWITWORKS_6":"Show off your design on our site so others can see your genius","CONFIGURATOR_HOWITWORKS_MOBILE":"Customize your <br /> <product> <br /> with these tabs","CONFIGURATOR_SHIP_TIME":"","CONFIGURATOR_REVIEWS_ENABLED":null,"IN_STOCK":"In Stock","QTY_IN_STOCK":"There are only {0} items left in stock.","PREORDER":"Pre-Order","QTY_PREORDER":"{0} item(s) are available for pre-order.","REMAIN_PREORDER":"The remaining items are available for pre-order.","BACKORDER":"Back Order","QTY_BACKORDER":"Back Order {0} item(s)","REMAIN_BACKORDER":"The remaining items are available on back order.","REMAIN_NOT_AVAILABLE":"Your shopping cart can currently not be ordered, since one or more of the products in your cart have an invalid price or are not available in the requested quantity. If you have any questions, please contact customer service."};
+		app.urls = {"appResources":"/on/demandware.store/Sites-striderite_us-Site/default/Resources-Load","pageInclude":"/on/demandware.store/Sites-striderite_us-Site/default/Page-Include","continueUrl":"http://www.striderite.com/en/home?dwcont=C2123132946","staticPath":"http://demandware.edgesuite.net/aako_prd/on/demandware.static/Sites-striderite_us-Site/-/default/v1450788507508/","addGiftCert":"/on/demandware.store/Sites-striderite_us-Site/default/GiftCert-Purchase","minicartGC":"/on/demandware.store/Sites-striderite_us-Site/default/GiftCert-ShowMiniCart","addProduct":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-AddProduct","addConfiguratorProduct":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-AddConfiguratorProduct","minicart":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-MiniAddProduct","cartShow":"/en/cart","miniCartShow":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-MiniCart","giftRegAdd":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/Address-GetAddressDetails?addressID=","paymentsList":"https://www.striderite.com/en/wallet","addressesList":"https://www.striderite.com/en/addressbook","wishlistAddress":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/Wishlist-SetShippingAddress","deleteAddress":"/on/demandware.store/Sites-striderite_us-Site/default/Address-Delete","getProductUrl":"/on/demandware.store/Sites-striderite_us-Site/default/Product-Show","getVariantProductJSON":"/on/demandware.store/Sites-striderite_us-Site/default/Product-GetVariantProductJSON","getBonusProducts":"/on/demandware.store/Sites-striderite_us-Site/default/Product-GetBonusProducts","addBonusProduct":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-AddBonusProduct","getSetItem":"/on/demandware.store/Sites-striderite_us-Site/default/Product-GetSetItem","rememberedItemsApi":"/on/demandware.store/Sites-striderite_us-Site/default/RememberedItems-Api","rememberedItemsGetProducts":"/on/demandware.store/Sites-striderite_us-Site/default/RememberedItems-GetProducts","rememberedItemsShow":"/en/wishlist","addNotifyItem":"/on/demandware.store/Sites-striderite_us-Site/default/RememberedItems-AddNotifyItem","setSessionListObject":"/on/demandware.store/Sites-striderite_us-Site/default/RememberedItems-SetSessionListObject","productDetail":"/on/demandware.store/Sites-striderite_us-Site/default/Product-Detail","getAvailability":"/on/demandware.store/Sites-striderite_us-Site/default/Product-GetAvailability","getConfigureAvailability":"/on/demandware.store/Sites-striderite_us-Site/default/Product-GetConfigureAvailability","removeImg":"http://demandware.edgesuite.net/aako_prd/on/demandware.static/Sites-striderite_us-Site/-/default/dw578e848d/images/interface/icon_remove.gif","searchsuggest":"/on/demandware.store/Sites-striderite_us-Site/default/Search-GetSuggestions","productNav":"/on/demandware.store/Sites-striderite_us-Site/default/Product-Productnav","quickCheckoutStart":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COQuickCheckout-Start","summaryRefreshURL":"/on/demandware.store/Sites-striderite_us-Site/default/COBilling-UpdateSummary","billingSelectCC":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COBilling-SelectCreditCard","updateAddressDetails":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COShipping-UpdateAddressDetails","updateAddressDetailsBilling":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COBilling-UpdateAddressDetails","shippingMethodsJSON":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COShipping-GetApplicableShippingMethodsJSON","shippingMethodsList":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COShipping-UpdateShippingMethodList","selectShippingMethodsList":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COShipping-SelectShippingMethod","resetPaymentForms":"/on/demandware.store/Sites-striderite_us-Site/default/COBilling-ResetPaymentForms","calendarImage":"http://demandware.edgesuite.net/aako_prd/on/demandware.static/Sites-striderite_us-Site/-/default/dwea5102aa/images/calendar_icon.png","compareShow":"/en/compare","compareAdd":"/on/demandware.store/Sites-striderite_us-Site/default/Compare-AddProduct","compareRemove":"/on/demandware.store/Sites-striderite_us-Site/default/Compare-RemoveProduct","compareEmptyImage":"http://demandware.edgesuite.net/aako_prd/on/demandware.static/Sites-striderite_us-Site/-/default/dw4f8f8347/images/comparewidgetempty.png","giftCardCheckBalance":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COBilling-GetGiftCertificateBalance","addCoupon":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-AddCoupon","jsChannelIFrame":"https://www.striderite.com/on/demandware.static/Sites-striderite_us-Site/-/default/dwcc309c1c/lib/jschannel/jschannel.html","catalogsignup":"http://www.striderite.com/en/home","shareorder":"http://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COSummary-ShareOrder","carddeclined":"http://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/COSummary-DeclinedModal","checkoutlogindialog":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/Account-IframeCheckoutLogin","recommendationsBaseUrl":"http://rec.wolvapps.com","recommendationsCallbackUrl":"/on/demandware.store/Sites-striderite_us-Site/default/WWWRecommendations-Tiles","emailsignupdialog":"http://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/Account-EmailSignupModal","accountDialog":"/on/demandware.store/Sites-striderite_us-Site/default/Account-IframeLogin","getAddressDetails":"/on/demandware.store/Sites-striderite_us-Site/default/Address-GetJSONDetails","resetPasswordDialog":"/on/demandware.store/Sites-striderite_us-Site/default/Account-PasswordResetDialog","termsAndConditionsDialog":"/on/demandware.store/Sites-striderite_us-Site/default/Account-TermsAndConditions","isEmployee":"/on/demandware.store/Sites-striderite_us-Site/default/Account-IsEmployeeAjax","threesixtyplugin":"/on/demandware.store/Sites-striderite_us-Site/default/Product-ThreeSixtyPlugin","accountRegistration":"/en/register","blogSearch":"/on/demandware.store/Sites-striderite_us-Site/default/Blog-Search?s=&suggest=","billingSaveEmail":"/on/demandware.store/Sites-striderite_us-Site/default/COBilling-StartBillingSaveEmailAddress","updateBasketTotals":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-UpdateBasketTotals","updateBasketCoupons":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-UpdateBasketCoupons","countryChangeWarning":"/on/demandware.store/Sites-striderite_us-Site/default/CountryGateway-Warning","getNumberOfItemsJSON":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-GetNumberOfItemsJSON","getCategoryLinksJSON":"/on/demandware.store/Sites-striderite_us-Site/default/Category-CategoryLinksJSON","getInStoreDefaultEmail":"/on/demandware.store/Sites-striderite_us-Site/default/COShipping-GetInStoreEmail","proDealIFrameUrl":"https://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/ProDeal-IFrameInput","accountShow":"https://www.striderite.com/en/account","promotionalPopupDialog":"/on/demandware.store/Sites-striderite_us-Site/default/Promotion-Popup","addSchoolCode":"/on/demandware.store/Sites-striderite_us-Site/default/Cart-AddSchoolCode","addCQLReviews":"/on/demandware.store/Sites-striderite_us-Site/default/CQLReviews-AddReviews","getOrderReferenceDetails":"/on/demandware.store/Sites-striderite_us-Site/default/AmazonPayments-GetOrderReferenceDetails","setOrderReferenceID":"/on/demandware.store/Sites-striderite_us-Site/default/AmazonPayments-SetOrderReferenceID","bvWriteReviewUrl":"http://www.striderite.com/on/demandware.store/Sites-striderite_us-Site/default/Product-AddProductReview"};
+		app.clientcache = app.clientcache || {"LISTING_INFINITE_SCROLL":true,"LISTING_REFINE_SORT":true};
+		app.amazonSitePreferences = {"AMAZON_MERCHANT_ID":"","AMAZON_LOGIN_BUTTON_TYPE":"LwA","AMAZON_LOGIN_BUTTON_COLOR":"Gold","AMAZON_LOGIN_BUTTON_SIZE":"small","AMAZON_LOGIN_REDIRECT_URL":"","AMAZON_PAY_REDIRECT_URL":"","AMAZON_SCOPE":"","AMAZON_PAY_BUTTON_TYPE":"PwA","AMAZON_PAY_BUTTON_COLOR":"Gold","AMAZON_PAY_BUTTON_SIZE":"small"};
+		app.amazonOrder = {"orderReferenceID":""};
+	}(window.app = window.app || {}));
+</script>
+<script type="text/javascript">
+
+	(function(app){
+		app.remote = {"PAGETYPE":"home","PAGE_ELIGIBLE_FOR_PROMO_POPUP":true,"PROMO_POPUP_RESET_INFO":{"Domain":"striderite.com","CookieTimeout":365,"ResetDate":{"y":2014,"m":9,"d":13}},"EMAIL_SIGNUP_SLIDER":false,"IS_PROMO_POPUP_COOKIE_EXPIRED":false};
+	}(window.app = window.app || {}));
+</script>
+<script type="text/javascript">
+
+	[]
+</script>
+<!--<script src="../dev/js/www_footerUI_global.js"></script>-->
+<script src="http://staging-na-wwwinc.demandware.net/on/demandware.static/Sites-striderite_us-Site/-/default/v1450383706398/js/www_footerUI_global.js"></script>
+
+</body>
+</html>
