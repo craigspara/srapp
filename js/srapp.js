@@ -26,7 +26,7 @@ var srapp = app.srapp || {};
         srapp.widgets.animateify.init();
         srapp.widgets.revealer.init();
         //app.srapp.cardify();
-        srapp.modSlider.init();
+        srapp.widgets.flexsliderify.init();
         srapp.widgets.featureify.init();
         //app.modStretchWide.init();
 
@@ -550,6 +550,60 @@ var srapp = app.srapp || {};
         }
     }
 
+    srapp.widgets.flexsliderify = {
+
+        defaults: {
+            namespace: "flx-",
+            selector: "ul > li",
+            animation: 'slide',
+            slideshow: true,
+            touch: true,
+            useCSS: true,
+            controlNav: true,
+            directionNav: true,
+            keyboard: true,
+            multipleKeyboard: false,
+            pauseOnHover: true,
+            pauseOnAction: true,
+            animationSpeed: 1000,
+            slideshowSpeed: 6000,
+            prevText: '',
+            nextText: ''
+        },
+
+        /**
+         * @name init
+         * @function
+         * @description : Initialize flexsliderify by configuring defaults, populating first feature-wrapper, and attaching event handlers
+         * @public
+         */
+
+        init: function () {
+
+            var targets = $('.flexsliderify'); // collection of all instances of the widget on a page
+
+            if (targets.length > 0) {
+
+                // Iterate over all targets
+                jQuery.each(targets, function(i, val) {
+
+                    var target = $(this); // the specific instance of the widget to be manipulated
+
+                    // Init slider with variables
+                    if (target.length > 0) {
+
+                        srapp.util.configurator.buildConfigs( target, 'flexsliderify-options', srapp.widgets.flexsliderify);
+
+                        target.flexslider(srapp.widgets.flexsliderify.configs);
+
+                    }
+
+                });
+            }
+
+        }
+    };
+
 })( window.app = window.app || {}, window.app.srapp = window.app.srapp || {}, jQuery );
 
 
@@ -679,75 +733,6 @@ var srapp = app.srapp || {};
 
 })(window.app.srapp = window.app.srapp || {}, jQuery);
 
-
-// Generalized flexslider functions
-(function (srapp, $) {
-    "use strict";
-
-
-    srapp.modSlider = {
-
-        defaults: {
-            namespace: "mod-",
-            selector: "ul > li",
-            animation: 'slide',
-            slideshow: true,
-            touch: true,
-            useCSS: true,
-            controlNav: true,
-            directionNav: true,
-            keyboard: false,
-            multipleKeyboard: false,
-            pauseOnHover: true,
-            pauseOnAction: true,
-            animationSpeed: 1000,
-            slideshowSpeed: 6000,
-            prevText: '',
-            nextText: ''
-        },
-
-        /**
-         * @name init
-         * @function
-         * @description : Initialize modSlider by configuring defaults, populating first feature-wrapper, and attaching event handlers
-         * @public
-         */
-
-        init: function () {
-
-            var targets = $('.mod-slider'); // collection of all instances of the widget on a page
-
-            if (targets.length > 0) {
-
-                // Iterate over all targets
-                jQuery.each(targets, function(i, val) {
-
-                    var target = $(this); // the specific instance of the widget to be manipulated
-
-                    // Init slider with variables
-                    if (target.length > 0) {
-
-                        srapp.util.configurator.buildConfigs( target, 'flexslider-options', srapp.modSlider);
-
-                        target.flexslider(srapp.modSlider.configs);
-
-                    }
-
-                });
-            }
-
-        }
-    };
-
-})(window.app.srapp = window.app.srapp || {}, jQuery);
-
-
-(function (srapp, $) {
-    "use strict";
-
-
-
-})(window.app.srapp = window.app.srapp || {}, jQuery);
 
 
 /**
