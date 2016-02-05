@@ -1,0 +1,58 @@
+
+.revealer {
+  margin-top: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+@media screen and (min-width: 767px) {
+  .revealer {
+    margin-top: 4em;
+  }
+}
+.revealer h4 {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+.revealer p {
+  font-size: 0.75rem;
+  margin: 0;
+  text-align: center;
+}
+.revealer p:first-of-type {
+  margin-bottom: 0.5em;
+}
+.revealer p.unrevealed-text {
+  overflow: hidden;
+  max-height: 500px;
+  -o-transition-property: max-height;
+  -ms-transition-property: max-height;
+  -moz-transition-property: max-height;
+  -webkit-transition-property: max-height;
+  transition-property: max-height;
+  -o-transition-duration: 0.9s;
+  -ms-transition-duration: 0.9s;
+  -moz-transition-duration: 0.9s;
+  -webkit-transition-duration: 0.9s;
+  transition-duration: 0.9s;
+  -o-transition-timing-function: ease-in-out;
+  -ms-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.revealer p.unrevealed {
+  max-height: 0;
+  -o-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.revealer a.show-content {
+  display: inline-block;
+  margin-left: 0.75em;
+  font-size: inherit;
+  text-align: left;
+  width: 7em;
+}
